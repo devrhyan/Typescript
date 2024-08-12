@@ -1,12 +1,26 @@
 "use strict";
-class User {
-    constructor(name, id) {
-        this.name = name;
-        this.id = id;
+class Person {
+    constructor(firstName, lastName, age) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+    }
+    get greet() {
+        return this.firstName + ' ' + this.lastName;
     }
 }
-const user = new User('Dog', 1);
-console.log(user.id);
-user.name = 'Harold';
-console.log(`User:`, user);
+class Clients extends Person {
+    get greet() {
+        return 'Dear, ' + super.greet;
+    }
+}
+class Staff extends Person {
+    get greet() {
+        return 'Hi, ' + super.greet;
+    }
+}
+let client1 = new Clients('Rhyan', 'Andrade', 21);
+let staff1 = new Staff('Ana', 'Silva', 30);
+console.log(client1.greet);
+console.log(staff1.greet);
 //# sourceMappingURL=app.js.map
